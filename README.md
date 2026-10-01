@@ -84,3 +84,12 @@ The scripts write analysis parameters and `sessionInfo()` output to the correspo
 ## License
 
 This code is released under the MIT License. See `LICENSE`.
+
+
+## Citation
+
+If you use this code, please cite:
+
+Nakamura, Y., Otsuki, T., & Kawaoka, S. (2026). *Xenium spatial transcriptomics analysis* (Version v1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23073838
+
+DOI: **10.5281/zenodo.23073838**
