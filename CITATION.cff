@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Xenium spatial transcriptomics analysis"
+authors:
+  - family-names: "Nakamura"
+    given-names: "Yuki"
+  - family-names: "Otsuki"
+    given-names: "Toshifumi"
+  - family-names: "Kawaoka"
+    given-names: "Shinpei"
+version: 1.0.0
+date-released: 2026-10-01
+url: "https://github.com/yukinamu76-lab/xenium-spatial-analysis"
