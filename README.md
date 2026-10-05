@@ -108,6 +108,6 @@ This code is released under the MIT License. See `LICENSE`.
 
 If you use this code, please cite:
 
-Nakamura, Y., Otsuki, T., & Kawaoka, S. (2026). *Analysis code for spatial transcriptomics and statistical procedures* [Computer software]. Zenodo.
+Nakamura, Y., Otsuki, T., & Kawaoka, S. (2026). *Analysis code for spatial transcriptomics and q-value calculation* [Computer software]. Zenodo.
 
-DOI: **[Zenodo concept DOI]**
+DOI: https://doi.org/10.5281/zenodo.23073837
