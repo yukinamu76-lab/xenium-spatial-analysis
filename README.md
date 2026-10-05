@@ -1,4 +1,4 @@
-# Analysis code for spatial transcriptomics and statistical procedures
+# Analysis code for spatial transcriptomics and q-value calculation
 
 This repository contains analysis code associated with the study, including Xenium spatial transcriptomic analysis and statistical procedures for q-value calculation.
 
