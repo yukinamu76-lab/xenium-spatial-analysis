@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "Analysis code for spatial transcriptomics and q-value calculation"
+title: "Analysis code for Xenium spatial and single-cell transcriptomics"
 authors:
   - family-names: "Nakamura"
     given-names: "Yuki"
@@ -8,7 +8,7 @@ authors:
     given-names: "Toshifumi"
   - family-names: "Kawaoka"
     given-names: "Shinpei"
-version: 1.1.0
-date-released: 2026-10-05
-doi: "10.5281/zenodo.23153201"
+version: 1.2.0
+date-released: 2026-10-07
+doi: "10.5281/zenodo.23073837"
 url: "https://github.com/yukinamu76-lab/xenium-spatial-analysis"
