@@ -1,0 +1,10 @@
+required <- c("dplyr","tidyr","readr","stringr","purrr","tibble","ggplot2","scales")
+missing <- required[!required %in% rownames(installed.packages())]
+if(length(missing)>0) install.packages(missing)
+source("00_check_inputs.R")
+source("01_build_all_cluster_tables.R")
+source("02_select_representative_pathways.R")
+source("03_reference_program_audit.R")
+source("04_make_publication_heatmap.R")
+writeLines(capture.output(sessionInfo()),file.path(output_dir,"sessionInfo.txt"))
+message("GSEA all-cluster pipeline v3 completed: ",output_dir)
