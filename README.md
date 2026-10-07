@@ -1,62 +1,130 @@
-# Analysis code for spatial transcriptomics and q-value calculation
+# Analysis code for Xenium spatial and single-cell transcriptomics
 
-This repository contains analysis code associated with the study, including Xenium spatial transcriptomic analysis and statistical procedures for q-value calculation.
+This repository contains analysis code associated with the study,
+including Xenium spatial transcriptomic analysis, probe-based
+single-cell transcriptomic analysis of peripheral blood neutrophils, and
+statistical procedures for q-value calculation.
 
-Code for the probe-based single-cell transcriptomic analysis will be added in a subsequent release after completion of the corresponding data deposition.
+The single-cell RNA-seq analysis code, including preprocessing,
+clustering, neutrophil subclustering, differential expression analysis,
+trajectory analysis, and gene set enrichment analysis (GSEA), is
+provided under `single_cell/`. Detailed documentation is available in
+`single_cell/README.md`.
 
-Sequence processing and other standard analytical procedures are described in the Methods section of the manuscript.
+Sequence processing and other standard analytical procedures are
+described in the Methods section of the manuscript.
 
 ## Data availability
 
-The Xenium spatial transcriptomics data generated in this study are deposited in the DDBJ Genomic Expression Archive (GEA) under accession **E-GEAD-1315** (array design accession **A-GEAD-246**).
+The Xenium spatial transcriptomics data generated in this study are
+deposited in the DDBJ Genomic Expression Archive (GEA) under accession
+**E-GEAD-1315** (array design accession **A-GEAD-246**).
 
-The repository does not redistribute the deposited Xenium data. Download the corresponding data from DDBJ GEA and place the two Xenium output directories under `raw_data/` as described below.
+The probe-based single-cell transcriptomic dataset of peripheral blood
+neutrophils is deposited in the DDBJ Genomic Expression Archive (GEA)
+under accession **E-GEAD-1320**. The corresponding raw sequencing data
+are deposited in the DDBJ Sequence Read Archive (DRA) under accession
+**DRA031926**.
 
-Nominal P values used for q-value calculation are provided in the corresponding Datasets EV associated with the manuscript. The input CSV files used for q-value calculation are not included in this repository.
+The repository does not redistribute the deposited transcriptomic data.
+Data required for the corresponding analyses should be obtained from
+DDBJ and prepared as described in the relevant analysis documentation.
+
+Nominal P values used for q-value calculation are provided in the
+corresponding Datasets EV associated with the manuscript. The input CSV
+files used for q-value calculation are not included in this repository.
 
 ## Repository contents
 
 ### Xenium spatial transcriptomics
 
-- `R/00_config.R` — shared paths, parameters, cell-type annotations, and plotting helpers.
-- `R/01_QC_clustering.R` — import, QC, normalization, sketch-based dimensionality reduction, Harmony integration, clustering, and projection to the full dataset.
-- `R/02_markers_annotation.R` — cluster marker analysis, cell-type annotation, Fig. 9A, and Table EV10.
-- `R/03_CD8_zscore.R` — CD8+ T-cell functional-state marker analysis and Fig. 9B.
-- `R/04_spatial_analysis.R` — transcript-level operational cell definitions, Fig. 9C, DBSCAN region definition, nearest-neighbor/logistic analyses, permutation testing, Fig. EV6, and Table EV11.
-- `docs/FIGURE_CODE_MAP.md` — manuscript figure/table-to-code map.
-- `docs/METHODS_FINAL.md` — analysis methods corresponding to the public scripts.
-- `docs/CODE_METHOD_AUDIT.md` — code/method consistency checklist.
-- `sessionInfo_xenium.txt` — R and package versions used for the Xenium analysis.
+-   `R/00_config.R` --- shared paths, parameters, cell-type annotations,
+    and plotting helpers.
+-   `R/01_QC_clustering.R` --- import, QC, normalization, sketch-based
+    dimensionality reduction, Harmony integration, clustering, and
+    projection to the full dataset.
+-   `R/02_markers_annotation.R` --- cluster marker analysis, cell-type
+    annotation, Fig. 9A, and Table EV10.
+-   `R/03_CD8_zscore.R` --- CD8+ T-cell functional-state marker analysis
+    and Fig. 9B.
+-   `R/04_spatial_analysis.R` --- transcript-level operational cell
+    definitions, Fig. 9C, DBSCAN region definition,
+    nearest-neighbor/logistic analyses, permutation testing, Fig. EV6,
+    and Table EV11.
+-   `docs/FIGURE_CODE_MAP.md` --- manuscript figure/table-to-code map.
+-   `docs/METHODS_FINAL.md` --- analysis methods corresponding to the
+    public scripts.
+-   `docs/CODE_METHOD_AUDIT.md` --- code/method consistency checklist.
+-   `sessionInfo_xenium.txt` --- R and package versions used for the
+    Xenium analysis.
 
-The 47-gene custom add-on panel used for Xenium profiling is reported separately in **Table EV9**; it is an assay-design table rather than an output generated by these analysis scripts.
+The 47-gene custom add-on panel used for Xenium profiling is reported
+separately in **Table EV9**; it is an assay-design table rather than an
+output generated by these analysis scripts.
+
+### Single-cell transcriptomics
+
+Analysis code for the probe-based single-cell transcriptomic analysis of
+peripheral blood neutrophils is provided under `single_cell/`.
+
+-   `single_cell/scripts/scRNA/` --- preprocessing, QC, dimensionality
+    reduction, clustering, cell-type annotation, neutrophil
+    subclustering, differential expression analysis, cluster composition
+    analysis, and trajectory analysis.
+-   `single_cell/scripts/gsea/` --- comprehensive and targeted gene set
+    enrichment analyses and generation of pathway-level summary
+    heatmaps.
+-   `single_cell/docs/FIGURE_CODE_MAP.md` --- manuscript figure-to-code
+    map.
+-   `single_cell/docs/METHODS_FINAL.md` --- analysis methods
+    corresponding to the public scripts.
+-   `single_cell/docs/CODE_METHOD_AUDIT.md` --- code/method consistency
+    audit.
+-   `single_cell/sessionInfo_scRNA.txt` --- R and package versions used
+    for the main single-cell RNA-seq analysis.
+-   `single_cell/sessionInfo_GSEA.txt` --- R and package versions used
+    for the GSEA workflow.
+-   `single_cell/README.md` --- detailed workflow, input requirements,
+    and execution information.
+
+The processed single-cell transcriptomic data are deposited in DDBJ GEA
+under accession **E-GEAD-1320**.
 
 ### Q-value calculation
 
-- `statistics/qvalue_calculation.R` — calculation of q-values from nominal P values using the `qvalue` R package.
-- `statistics/README_qvalue.md` — datasets, statistical comparisons, input format, and output description for q-value calculation.
-- `statistics/sessionInfo_qvalue.txt` — R and package versions used for q-value calculation.
+-   `statistics/qvalue_calculation.R` --- calculation of q-values from
+    nominal P values using the `qvalue` R package.
+-   `statistics/README_qvalue.md` --- datasets, statistical comparisons,
+    input format, and output description for q-value calculation.
+-   `statistics/sessionInfo_qvalue.txt` --- R and package versions used
+    for q-value calculation.
 
-The input CSV files used for q-value calculation are not included in this repository. Nominal P values are provided in the corresponding Datasets EV.
+The input CSV files used for q-value calculation are not included in
+this repository. Nominal P values are provided in the corresponding
+Datasets EV.
 
 ## Xenium input layout
 
 Set the project root before running, for example:
 
-```r
+``` r
 Sys.setenv(XENIUM_PROJECT_ROOT = "/path/to/project")
 ```
 
-Alternatively, run the scripts from the repository root or from the `R/` directory.
+Alternatively, run the scripts from the repository root or from the `R/`
+directory.
 
 The scripts expect Xenium output directories under:
 
-```text
+``` text
 raw_data/
   <directory containing Region_3>   # PBS-treated lymph node
   <directory containing Region_4>   # albumin-treated lymph node
 ```
 
-Each Xenium directory should contain the standard Xenium output files used by the scripts, including `cells.parquet` (or `cells.csv.gz`) and `transcripts.parquet`.
+Each Xenium directory should contain the standard Xenium output files
+used by the scripts, including `cells.parquet` (or `cells.csv.gz`) and
+`transcripts.parquet`.
 
 Outputs are written under `results/`.
 
@@ -64,41 +132,89 @@ Outputs are written under `results/`.
 
 Run the scripts in order:
 
-```r
+``` r
 source("R/01_QC_clustering.R")
 source("R/02_markers_annotation.R")
 source("R/03_CD8_zscore.R")
 source("R/04_spatial_analysis.R")
 ```
 
-If running from inside the `R/` directory, use the corresponding file names without the `R/` prefix.
+If running from inside the `R/` directory, use the corresponding file
+names without the `R/` prefix.
 
 ## Main Xenium analysis parameters
 
-- QC: `nFeature_Xenium > 3`
-- Sketch size: 50,000 cells
-- PCA: 50 components computed; first 20 used downstream
-- Integration: Harmony, grouped by sample (`orig.ident`)
-- Clustering: shared nearest-neighbor graph; Seurat `FindClusters` resolution 0.5 (default Louvain algorithm)
-- Random seed: 42
-- DBSCAN: `eps = 50 um`, `minPts = 100`; regions with <5,000 cells excluded
-- Permutations: 1,000
-- Transcript QV threshold for the primary spatial analysis: none (`QV_MIN = 0`); QV >= 20 is evaluated as a sensitivity analysis
-- Low-quality annotation is retained in the reported downstream dataset (`EXCLUDE_LOW_QUALITY = FALSE`)
+-   QC: `nFeature_Xenium > 3`
+-   Sketch size: 50,000 cells
+-   PCA: 50 components computed; first 20 used downstream
+-   Integration: Harmony, grouped by sample (`orig.ident`)
+-   Clustering: shared nearest-neighbor graph; Seurat `FindClusters`
+    resolution 0.5 (default Louvain algorithm)
+-   Random seed: 42
+-   DBSCAN: `eps = 50 um`, `minPts = 100`; regions with \<5,000 cells
+    excluded
+-   Permutations: 1,000
+-   Transcript QV threshold for the primary spatial analysis: none
+    (`QV_MIN = 0`); QV \>= 20 is evaluated as a sensitivity analysis
+-   Low-quality annotation is retained in the reported downstream
+    dataset (`EXCLUDE_LOW_QUALITY = FALSE`)
 
-## R packages and computational environment
+## Single-cell analysis
 
-The Xenium scripts use Seurat (v5), harmony, arrow, dbscan, RANN, pheatmap, ggplot2, patchwork, dplyr, tidyr, tibble, gridExtra, and data.table. Rasterized Seurat plotting may also use scattermore when available. `grid` is supplied with R.
+The single-cell workflow is documented separately in
+`single_cell/README.md`.
 
-The R and package versions used for the Xenium analysis are provided in `sessionInfo_xenium.txt`.
+The public workflow includes scripts for:
 
-The R and package versions used for q-value calculation are provided in `statistics/sessionInfo_qvalue.txt`.
+-   data loading and quality control;
+-   PCA and dimensionality reduction;
+-   clustering and cell-type annotation;
+-   neutrophil subset analysis and reclustering;
+-   neutrophil marker and cluster-composition analyses;
+-   differential expression and full gene-ranking analyses;
+-   trajectory analysis;
+-   comprehensive and targeted GSEA; and
+-   generation of pathway-level summary heatmaps.
+
+Processed single-cell transcriptomic data required for these analyses
+are available through DDBJ GEA under accession **E-GEAD-1320**.
+
+## R packages and computational environments
+
+The Xenium scripts use Seurat (v5), harmony, arrow, dbscan, RANN,
+pheatmap, ggplot2, patchwork, dplyr, tidyr, tibble, gridExtra, and
+data.table. Rasterized Seurat plotting may also use scattermore when
+available. `grid` is supplied with R.
+
+The R and package versions used for the Xenium analysis are provided in
+`sessionInfo_xenium.txt`.
+
+The single-cell RNA-seq and GSEA workflows were run in separate
+computational environments. Their R and package versions are provided in
+`single_cell/sessionInfo_scRNA.txt` and
+`single_cell/sessionInfo_GSEA.txt`, respectively.
+
+The R and package versions used for q-value calculation are provided in
+`statistics/sessionInfo_qvalue.txt`.
 
 ## Notes on reproducibility
 
-The public Xenium configuration removes local absolute paths and uses `XENIUM_PROJECT_ROOT` or the current working directory. Cell-type annotations are fixed in `annotation_map`; marker evidence used to support those assignments is stored in `annotation_evidence` and Table EV10.
+The public Xenium configuration removes local absolute paths and uses
+`XENIUM_PROJECT_ROOT` or the current working directory. Cell-type
+annotations are fixed in `annotation_map`; marker evidence used to
+support those assignments is stored in `annotation_evidence` and Table
+EV10.
 
-The q-value calculation script uses nominal P values generated from the statistical comparisons described in the Methods and `statistics/README_qvalue.md`. Corresponding nominal P values are available in the relevant Datasets EV.
+The single-cell analysis code is organized under `single_cell/`, with
+separate documentation for the main single-cell workflow and the GSEA
+workflow. Because these analyses were performed in separate
+computational environments, environment information is provided
+separately for each workflow.
+
+The q-value calculation script uses nominal P values generated from the
+statistical comparisons described in the Methods and
+`statistics/README_qvalue.md`. Corresponding nominal P values are
+available in the relevant Datasets EV.
 
 ## License
 
@@ -108,6 +224,8 @@ This code is released under the MIT License. See `LICENSE`.
 
 If you use this code, please cite:
 
-Nakamura, Y., Otsuki, T., & Kawaoka, S. (2026). *Analysis code for spatial transcriptomics and q-value calculation* [Computer software]. Zenodo.
+Nakamura, Y., Otsuki, T., & Kawaoka, S. (2026). *Analysis code for
+Xenium spatial and single-cell transcriptomics* \[Computer software\].
+Zenodo.
 
 DOI: https://doi.org/10.5281/zenodo.23073837
